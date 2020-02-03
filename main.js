@@ -36,25 +36,22 @@ class Template extends utils.Adapter {
 
         // The adapters config (in the instance object everything under the attribute "native") is accessible via
         // this.config:
-        this.log.info('config option1: ' + this.config.option1);
-        this.log.info('config option2: ' + this.config.option2);
+        //this.log.info('config option1: ' + this.config.option1);
+        //this.log.info('config option2: ' + this.config.option2);
 
-        /*
-        For every state in the system there has to be also an object of type state
-        Here a simple template for a boolean variable named "testVariable"
-        Because every adapter instance uses its own unique namespace variable names can't collide with other adapters variables
-        */
-        await this.setObjectAsync('testVariable', {
+        this.log.info('Hello World in Log Datei');
+        this.setObjectNoExists('HelloWorld', {
             type: 'state',
             common: {
-                name: 'testVariable',
-                type: 'boolean',
-                role: 'indicator',
-                read: true,
-                write: true,
+                name: 'HelloWorld',
+                type: 'text',
+                role: 'value'
             },
-            native: {},
-        });
+            native: {}
+        })
+
+
+
 
         // in this template all states changes inside the adapters namespace are subscribed
         this.subscribeStates('*');
